@@ -1,7 +1,7 @@
 import grid from 'gridfs-stream';
 import mongoose from 'mongoose';
 
-const url = 'https://ourblog-a9yp.onrender.com';
+const url = '';
 
 
 let gfs, gridfsBucket;  
@@ -22,7 +22,7 @@ export const uploadImage =  (request, response) => {
 
       return  response.status(200).json(imageUrl); 
     }
-    //   if(!request.file)
+    
     else {
         return   response.status(404).json({msg:"File not found"});
     }
@@ -31,8 +31,7 @@ export const uploadImage =  (request, response) => {
 export const getImage = async (request, response) => {
     try {   
         const file = await gfs.files.findOne({ filename: request.params.filename });
-        //const readStream = gfs.createReadStream(file.filename);
-        //     readStream.pipe(response);
+       
         const readStream = gridfsBucket.openDownloadStream(file._id);
         readStream.pipe(response);
     } catch (error) {
