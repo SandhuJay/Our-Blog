@@ -123,6 +123,7 @@ const onValueChange=(e)=>{
        <TextField id="standard-basic"  variant="standard"value={login.password} onChange={(e)=>onValueChange(e)} name='password' label="Enter Password"/>
        {error && <Error>{error}</Error>}
        <LoginButton variant="contained" onClick={() => loginUser()}>Login</LoginButton>
+         <Text> Guest Username : abc & Password : 12345</Text>
        <Text  style ={{textAlign:'center'}}>
              OR
           </Text>
